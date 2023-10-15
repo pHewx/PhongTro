@@ -32,16 +32,9 @@ const DetailPost = () => {
     if (posts.length > 0) {
       setcurrentPost(posts.filter((post) => post.id === id)[0]);
     }
-  }, [posts]);
+  });
 
-  useEffect(() => {
-    if (Object.keys(currentPost).length > 0) {
-      console.log("run");
-      geocodeByAddress(currentPost?.address)
-        .then((results) => getLatLng(results[0]))
-        .then(({ lat, lng }) => setCoords({ lat, lng }));
-    }
-  }, [currentPost]);
+
 
   return (
     <div className="w-full flex gap-4 ">
@@ -134,10 +127,6 @@ const DetailPost = () => {
                 </tr>
               </tbody>
             </table>
-          </div>
-          {/* Map */}
-          <div>
-            <SimpleMap coords={coords} />
           </div>
         </div>
       </div>
